@@ -28,3 +28,11 @@ variable "ec2_specs" {
   description = "instance parameters"
   type        = map(string)
 }
+
+variable "access_key" {
+
+}
+
+variable "secret_key" {
+
+}
