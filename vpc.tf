@@ -25,23 +25,3 @@ resource "aws_subnet" "private_subnet" {
     aws_subnet.public_subnet
   ]
 }
-
-module "module_s3_bucket" {
-  source      = "./modules/s3"
-  bucket_name = "module-bucket-nombre-unico1234567891011"
-}
-
-module "terraform_state_backend" {
-  source = "cloudposse/tfstate-backend/aws"
-  # Cloud Posse recommends pinning every module to a specific version
-  version     = "1.1.1"
-  namespace   = "example"
-  stage       = "dev"
-  name        = "terraform"
-  attributes  = ["state"]
-  environment = "us-east-1"
-
-  terraform_backend_config_file_path = "."
-  terraform_backend_config_file_name = "backend.tf"
-  force_destroy                      = false
-}
